@@ -7,30 +7,50 @@ const buttonCreate = document.querySelector('[data-create]');
 const buttonDestroy = document.querySelector('[data-destroy]');
 const boxesEl = document.querySelector('#boxes');
 // не доходить
-// // console.log(inputEl, buttonCreate, buttonDestroy, boxesEl);
-// inputEl.addEventListener('input', getValue)
-// buttonCreate.addEventListener('click', createBoxes)
-// buttonDestroy.addEventListener('click',)
+// console.log(inputEl, buttonCreate, buttonDestroy, boxesEl);
+// inputEl.addEventListener('input', )
+buttonCreate.addEventListener('click', getValue)
+buttonDestroy.addEventListener('click',onСlean)
 
 
-// function getValue(event) {
-//  const value = Number(event.currentTarget.value);
+function getValue(event) {
+  const number = Number(inputEl.value)
+  console.log(number);
+  if (!number) return;
+ createBoxes(number)
+}
 
-//   if (!value) return;
+function createBoxes(event) {
+  let element = []
 
-//   createBoxes(value);
-// }
+  for (let i = 0; i < event; i += 1) {
+    const arr = document.createElement('div');
+    const size = 30 + i * 10;
+    arr.style.width = `${size}px`;
+    arr.style.height = `${size}px`;
+    arr.style.backgroundColor = getRandomHexColor();
+    console.log(arr);
+    element.push(arr)
+    console.log(element);
+  }
+  boxesEl.append(...element)
 
-  
-// function createBoxes(event) {
-//   let element = '';
-//   let size = 30;
-//   for (let i = 0; i < event; i += 1) {
-    
-// element+=`<div class ='item' style ='width':${size}px; height:${size} ;background-color:${getRandomHexColor()} `
-//     size += 10;
-//   }
- 
-//   return element;
-// }
+
+  inputEl.value = ''
+}
+
+
+
+function onСlean(event) {
+  boxesEl.innerHTML = "";
+
+}
+
+
+
+
+
+
+
+
 
